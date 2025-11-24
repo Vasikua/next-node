@@ -3,8 +3,39 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import { current } from '@reduxjs/toolkit';
 import {useCarousel} from '@/hooks/useCarousel';
+import { Skeleton } from '@/components/ui/skeleton';
+
+const LoadingSkeleton = () => {
+return (
+    <div className="landing-skeleton">
+        <div className="landing-skeleton__hero" >
+            <div className="landing-skeleton__hero-content" >
+                <Skeleton  className="landing-skeleton__title" />
+                <Skeleton className="landing-skeleton__subtitle"  />
+                <Skeleton  className="landing-skeleton__subtitle-secondary" />
+                <Skeleton className="landing-skeleton__button " />
+            </div>
+            <Skeleton className="landing-skeleton__hero-image"/>
+        </div>
+        <div className="landing-skeleton__featured">
+            <Skeleton className="landing-skeleton__featured-title"/>
+            <Skeleton className="landing-skeleton__featured-description"/>
+            <div className="landing-skeleton__tags">
+                {Array.from({length:5}).map((_, index) => (
+                    <Skeleton key={index} className="landing-skeleton__tag"/>
+                ))}
+            </div>
+            <div className="landing-skeleton_courses">
+                {Array.from({length:4}).map((_, index) => (
+                    <Skeleton key={index} className="landing-skeleton__course-car d"/>
+                ))}
+            </div>
+        </div>
+    </div>
+);    
+
+}
 const Landing = () => {
 
     const currentImage = useCarousel({totalImages:3});
@@ -53,7 +84,22 @@ const Landing = () => {
                         transition={{ duration: 0.5 }}
                         viewport={{amount:0.3, once: true}}
                         className='landing__featured'
-                >
+            >
+                <h2 className="landing__featured-title">Features Courses</h2>
+                <p className="landing__featured-description">
+                    From beginner to advanced, our courses are
+                    designed to help you achieve your learning goals.
+                </p>
+                <div className="landing__tags">
+                    {["Development", "React nextjs", "Backend dev", "JavaScript", "Photography", "Music"].map((tag, index) => (
+                        <span key={index} className="landing__tag">
+                            {tag}
+                        </span>
+                    ))}
+                </div>
+                <div className="landing__courses">
+                    {/* {courses display} */}
+                </div>
                 </motion.div>
             </motion.div>
          
