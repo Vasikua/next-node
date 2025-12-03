@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import {useCarousel} from '@/hooks/useCarousel';
 import { Skeleton } from '@/components/ui/skeleton';
+import { useGetCourseQuery } from '@/state/api';
 
 const LoadingSkeleton = () => {
 return (
@@ -38,7 +39,10 @@ return (
 }
 const Landing = () => {
 
-    const currentImage = useCarousel({totalImages:3});
+    const currentImage = useCarousel({ totalImages: 3 });
+    
+    const { data: courses, isLoading, isError } = useGetCourseQuery({});
+    console.log("courses:", courses)
     return (
         <motion.div
             initial={{ opacity: 0 }}
