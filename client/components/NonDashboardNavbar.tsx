@@ -1,7 +1,6 @@
 import React from 'react';
 import { Bell } from 'lucide-react';
 import Link from 'next/link';
-import { BookOpen } from 'lucide-react';
 
 
 export default function NonDashboardNavbar() {
@@ -15,10 +14,12 @@ export default function NonDashboardNavbar() {
               <div className='flex items-center gap-4'>
                   <div className="relative group">
                       <Link href="/search" className="nondashboard-navbar__search-input">
-                          <span className="hidden sm:inline">Search Courses</span>
-                          <span className="sm:hidden">Search</span>
+                          {/* <BookOpen className="nondashboard-navbar__search-icon"/> */}
+                              <span className="hidden sm:inline">Search Courses</span>
+                              <span className="sm:hidden">Search</span>
+                              
                       </Link>
-                      <BookOpen className="nondashboard-navbar__search-icon"/>
+                      
                   </div>
                 </div>
              </div>     
